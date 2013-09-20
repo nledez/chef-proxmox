@@ -35,6 +35,7 @@ ruby_block "Check if pve kernel is running" do
   block do
     unless node['kernel']['release'] =~ /-pve$/
       Chef::Application.fatal!("Need to reboot")
+      exit 0
     end
   end
 end
