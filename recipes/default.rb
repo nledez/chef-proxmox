@@ -42,6 +42,12 @@ file '/etc/grub.d/06_OVHkernel' do
   action :delete
 end
 
+cookbook_file '/etc/sysctl.d/disableipv6.conf' do
+  mode '0444'
+  owner 'root'
+  group 'root'
+end
+
 cookbook_file '/etc/grub.d/10_linux' do
   source '10_linux'
   mode '0555'
