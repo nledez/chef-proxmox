@@ -1,0 +1,41 @@
+#
+# Shorewall version 4.0 - Sample Rules File for two-interface configuration.
+# Copyright (C) 2006,2007 by the Shorewall Team
+#
+# This library is free software; you can redistribute it and/or
+# modify it under the terms of the GNU Lesser General Public
+# License as published by the Free Software Foundation; either
+# version 2.1 of the License, or (at your option) any later version.
+#
+# See the file README.txt for further details.
+#------------------------------------------------------------------------------
+# For information about entries in this file, type "man shorewall-rules"
+#############################################################################################################
+#ACTION		SOURCE		DEST		PROTO	DEST	SOURCE		ORIGINAL	RATE		USER/	MARK	CONNLIMIT	TIME         HEADERS         SWITCH
+#							PORT	PORT(S)		DEST		LIMIT		GROUP
+#SECTION ALL
+#SECTION ESTABLISHED
+#SECTION RELATED
+SECTION NEW
+
+MySSH(ACCEPT)	all	       $FW
+Proxmox(ACCEPT)	all	       $FW
+Nagios(ACCEPT)  net:$ADMIN     $FW
+SSH(ACCEPT)     net:$ADMIN     $FW
+Ping(ACCEPT)	all	       all
+
+# <%= @ip_root %> # Root
+SHELL cat /etc/shorewall/rules.d.root/*.rules 2> /dev/null || true
+
+<% if @ip_staging %># <%= @ip_staging %> # Staging
+SHELL cat /etc/shorewall/rules.d.staging/*.rules 2> /dev/null || true
+
+<% end %>
+<% if @ip_production %># <%= @ip_production %> # Production
+SHELL cat /etc/shorewall/rules.d.production/*.rules 2> /dev/null || true
+
+<% end %>
+# VM
+SHELL cat /etc/shorewall/rules.d.vm/*.rules 2> /dev/null || true
+
+#LAST LINE -- ADD YOUR ENTRIES BEFORE THIS ONE -- DO NOT REMOVE

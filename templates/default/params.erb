@@ -1,0 +1,14 @@
+#
+# Shorewall version 3.2 - Params File
+#
+# /etc/shorewall/params
+#
+#
+###############################################################################
+NET_IF=eth0
+
+VZ_NETS="<%= @vz_network %>/24"
+
+ADMIN=<%= @ip_admin.join(',') %>
+
+#LAST LINE - ADD YOUR ENTRIES ABOVE THIS ONE - DO NOT REMOVE

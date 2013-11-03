@@ -1,0 +1,180 @@
+#
+# Shorewall version 4 - Modules File
+#
+# /usr/share/shorewall/modules
+#
+#	This file loads the modules that may be needed by the firewall.
+#
+#	THE ORDER OF THE COMMANDS BELOW IS IMPORTANT!!!!!! You MUST load in
+#	dependency order. i.e., if M2 depends on M1 then you must load M1
+#	before you load M2.
+#
+#  If you need to modify this file, copy it to /etc/shorewall and modify the
+#  copy.
+#
+###############################################################################
+#
+# Essential Modules
+#
+loadmodule nfnetlink
+loadmodule x_tables
+loadmodule ip_tables
+loadmodule iptable_filter
+loadmodule iptable_mangle
+loadmodule ip_conntrack
+loadmodule nf_conntrack
+loadmodule nf_conntrack_ipv4
+loadmodule iptable_nat
+loadmodule xt_state
+loadmodule xt_tcpudp
+loadmodule ipt_LOG
+#
+# Other xtables modules
+#
+loadmodule xt_CLASSIFY
+loadmodule xt_connmark
+loadmodule xt_CONNMARK
+loadmodule xt_conntrack
+loadmodule xt_dccp
+loadmodule xt_dscp
+loadmodule xt_DSCP
+loadmodule xt_hashlimit
+loadmodule xt_helper
+loadmodule xt_ipp2p
+loadmodule xt_iprange
+loadmodule xt_length
+loadmodule xt_limit
+loadmodule xt_mac
+loadmodule xt_mark
+loadmodule xt_MARK
+loadmodule xt_multiport
+loadmodule xt_NFLOG
+loadmodule xt_NFQUEUE
+loadmodule xt_owner
+loadmodule xt_physdev
+loadmodule xt_pkttype
+loadmodule xt_tcpmss
+loadmodule xt_IPMARK
+loadmodule xt_TPROXY
+#
+# Helpers
+#
+loadmodule ip_conntrack_amanda
+loadmodule ip_conntrack_ftp
+loadmodule ip_conntrack_h323
+loadmodule ip_conntrack_irc
+loadmodule ip_conntrack_netbios_ns
+loadmodule ip_conntrack_pptp
+loadmodule ip_conntrack_sip
+loadmodule ip_conntrack_tftp
+loadmodule ip_nat_amanda
+loadmodule ip_nat_ftp
+loadmodule ip_nat_h323
+loadmodule ip_nat_irc
+loadmodule ip_nat_pptp
+loadmodule ip_nat_sip
+loadmodule ip_nat_snmp_basic
+loadmodule ip_nat_tftp
+loadmodule ip_set
+loadmodule ip_set_iphash
+loadmodule ip_set_ipmap
+loadmodule ip_set_macipmap
+loadmodule ip_set_portmap
+#
+# Ipset
+#
+loadmodule ip_set
+loadmodule ip_set_iphash
+loadmodule ip_set_ipmap
+loadmodule ip_set_ipporthash
+loadmodule ip_set_iptree
+loadmodule ip_set_iptreemap
+loadmodule ip_set_macipmap
+loadmodule ip_set_nethash
+loadmodule ip_set_portmap
+loadmodule ipt_SET
+loadmodule ipt_set
+#
+# 2.6.20+ helpers
+#
+loadmodule nf_conntrack_ftp ports=21,2121
+loadmodule nf_conntrack_h323
+loadmodule nf_conntrack_irc
+loadmodule nf_conntrack_netbios_ns
+loadmodule nf_conntrack_netlink
+loadmodule nf_conntrack_pptp
+loadmodule nf_conntrack_proto_gre
+loadmodule nf_conntrack_proto_sctp
+loadmodule nf_conntrack_sip
+loadmodule nf_conntrack_tftp
+loadmodule nf_conntrack_sane
+loadmodule nf_nat_amanda
+loadmodule nf_nat_ftp
+loadmodule nf_nat_h323
+loadmodule nf_nat_irc
+loadmodule nf_nat
+loadmodule nf_nat_pptp
+loadmodule nf_nat_proto_gre
+loadmodule nf_nat_sip
+loadmodule nf_nat_snmp_basic
+loadmodule nf_nat_tftp
+#
+# Traffic Shaping
+#
+loadmodule sch_sfq
+loadmodule sch_ingress
+loadmodule sch_hfsc
+loadmodule sch_htb
+loadmodule cls_u32
+loadmodule cls_fw
+loadmodule cls_flow
+loadmodule act_police
+#
+# Extensions
+#
+loadmodule ipt_addrtype
+loadmodule ipt_ah
+loadmodule ipt_CLASSIFY
+loadmodule ipt_CLUSTERIP
+loadmodule ipt_comment
+loadmodule ipt_connmark
+loadmodule ipt_CONNMARK
+loadmodule ipt_conntrack
+loadmodule ipt_dscp
+loadmodule ipt_DSCP
+loadmodule ipt_ecn
+loadmodule ipt_ECN
+loadmodule ipt_esp
+loadmodule ipt_hashlimit
+loadmodule ipt_helper
+loadmodule ipt_ipp2p
+loadmodule ipt_iprange
+loadmodule ipt_length
+loadmodule ipt_limit
+loadmodule ipt_LOG
+loadmodule ipt_mac
+loadmodule ipt_mark
+loadmodule ipt_MARK
+loadmodule ipt_MASQUERADE
+loadmodule ipt_multiport
+loadmodule ipt_NETMAP
+loadmodule ipt_NOTRACK
+loadmodule ipt_owner
+loadmodule ipt_physdev
+loadmodule ipt_pkttype
+loadmodule ipt_policy
+loadmodule ipt_realm
+loadmodule ipt_recent
+loadmodule ipt_REDIRECT
+loadmodule ipt_REJECT
+loadmodule ipt_SAME
+loadmodule ipt_sctp
+loadmodule ipt_set
+loadmodule ipt_state
+loadmodule ipt_tcpmss
+loadmodule ipt_TCPMSS
+loadmodule ipt_tos
+loadmodule ipt_TOS
+loadmodule ipt_ttl
+loadmodule ipt_TTL
+loadmodule ipt_ULOG

@@ -1,0 +1,11 @@
+# Shorewall version 4 - Nagios Proxmox
+#
+# /etc/shorewall/macro.Proxmox
+#
+#       This macro handles Proxmox
+#
+###############################################################################
+#ACTION SOURCE  DEST    PROTO   DEST    SOURCE  RATE    USER/
+#                               PORT(S) PORT(S) LIMIT   GROUP
+PARAM   -       -       tcp     8006
+#LAST LINE -- ADD YOUR ENTRIES BEFORE THIS ONE -- DO NOT REMOVE

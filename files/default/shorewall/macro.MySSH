@@ -1,0 +1,12 @@
+#
+# Shorewall version 3.4 - JabberSecure (ssl) Macro
+#
+# macro.MySSH
+#
+#	This macro accepts my SSH traffic
+#
+###############################################################################
+#TARGET	SOURCE	DEST	PROTO	DEST	SOURCE	RATE	USER/
+#				PORT(S)	PORT(S)	LIMIT	GROUP
+PARAM	-	-	tcp	223
+#LAST LINE -- ADD YOUR ENTRIES BEFORE THIS ONE -- DO NOT REMOVE

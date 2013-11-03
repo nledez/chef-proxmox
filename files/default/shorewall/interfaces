@@ -1,0 +1,17 @@
+#
+# Shorewall version 4.0 - Sample Interfaces File for two-interface configuration.
+# Copyright (C) 2006 by the Shorewall Team
+#
+# This library is free software; you can redistribute it and/or
+# modify it under the terms of the GNU Lesser General Public
+# License as published by the Free Software Foundation; either
+# version 2.1 of the License, or (at your option) any later version.
+#
+# See the file README.txt for further details.
+#------------------------------------------------------------------------------
+# For information about entries in this file, type "man shorewall-interfaces"
+###############################################################################
+#ZONE	INTERFACE	BROADCAST	OPTIONS
+net	$NET_IF		-		tcpflags,proxyarp=1
+vz	venet0		-		logmartians=0,routefilter=0,nets=($VZ_NETS),routeback,bridge
+#LAST LINE -- ADD YOUR ENTRIES BEFORE THIS ONE -- DO NOT REMOVE
