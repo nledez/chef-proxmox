@@ -55,6 +55,13 @@ cookbook_file '/etc/grub.d/10_linux' do
   group 'root'
 end
 
+cookbook_file '/etc/apt/sources.list.d/pve-enterprise.list' do
+  source 'pve-enterprise.list'
+  mode '0444'
+  owner 'root'
+  group 'root'
+end
+
 apt_repository 'proxmox' do
   uri 'http://download.proxmox.com/debian'
   distribution "wheezy"
@@ -80,5 +87,6 @@ end
 node['proxmox']['packages'].each do |pkg|
   package pkg do
     action :install
+    options '-o Dpkg::Options::="--force-confold"'
   end
 end
