@@ -7,6 +7,14 @@
 # All rights reserved - Do Not Redistribute
 #
 
+%w{bind9utils bind9}.each do |pkg|
+  package pkg do
+    action :purge
+  end
+end
+
+package "dnsmasq"
+
 if node['proxmox']['lvm']
   directory "/var/lib/vz" do
     action :create
