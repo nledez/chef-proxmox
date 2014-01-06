@@ -20,11 +20,12 @@ if node['proxmox']['lvm']
     action :create
   end
 
-  LVM = `lvs --noheadings`
-  volumes = LVM.split(/\n/).map { |v| v.split(/ +/)[1] }
+  LV = `lvs --noheadings`
+  VG = `vgs --noheadings`
+  volumes = LV.split(/\n/).map { |v| v.split(/ +/)[1] }
+  vg = VG.split(/\n/).map { |v| v.split(/ +/)[1] }.uniq[0]
   unless volumes.include? 'vz'
     Chef::Log.info "Need to create vz lv"
-    vg = LVM.split(/\n/).map { |v| v.split(/ +/)[2] }.uniq[0]
 
     bash "create-/dev/#{vg}/vz" do
       code <<-EOH
