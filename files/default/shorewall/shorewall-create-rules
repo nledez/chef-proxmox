@@ -1,0 +1,52 @@
+#!/usr/bin/env ruby1.9.3
+
+ves = {}
+ves_by_hostname = {}
+ves_by_shortname = {}
+ve_list = `/usr/sbin/vzlist -Ha`.split /\n/
+
+ve_list.each do |ve|
+  (dummy, ve_id, ve_proc, ve_status, ve_ip, ve_hostname) = ve.split /[ ]+/
+  ves[ve_id] = {
+    :id => ve_id,
+    :status => ve_status,
+    :ip => ve_ip,
+    :hostname => ve_hostname
+  }
+  ves_by_hostname[ve_hostname] = ve_id
+  ves_by_shortname[ve_hostname.gsub(/\..*/, '')] = ve_id
+end
+
+type = ARGV[0]
+host = ARGV[1]
+proto = ARGV[2]
+port = ARGV[3]
+
+if port.nil?
+  puts "shorewall-create-rules <type> <host> <proto> <port>"
+  exit
+end
+
+if ves.has_key? host
+  host_to_manage = ves[host]
+else
+  if ves[ves_by_hostname[host]]
+    host_to_manage = ves[ves_by_hostname[host]]
+  else
+    host_to_manage = ves[ves_by_shortname[host]]
+  end
+end
+
+rule = File.open("/etc/shorewall/shorewall-rule-template").readlines[0]
+rule.gsub!(/%hostname%/, host_to_manage[:hostname])
+rule.gsub!(/%ip%/, host_to_manage[:ip])
+rule.gsub!(/%port%/, port)
+rule.gsub!(/%type%/, type.upcase)
+
+filetarget = "/etc/shorewall/rules.d.#{type}/#{proto}.rules"
+
+if File.exist? (filetarget)
+  puts "#{filetarget} allready exist !"
+else
+  File.open(filetarget, 'w+').puts rule
+end

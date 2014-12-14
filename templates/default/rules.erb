@@ -18,10 +18,10 @@
 #SECTION RELATED
 SECTION NEW
 
-MySSH(ACCEPT)	all	       $FW
-Proxmox(ACCEPT)	all	       $FW
-Nagios(ACCEPT)  net:$ADMIN     $FW
-SSH(ACCEPT)     net:$ADMIN     $FW
+MySSH(ACCEPT)	all	       $FW<% if @ip_root %>	-	-	-	$ROOT_IP<% end %>
+Proxmox(ACCEPT)	all	       $FW<% if @ip_root %>	-	-	-	$ROOT_IP<% end %>
+Nagios(ACCEPT)  net:$ADMIN     $FW<% if @ip_root %>	-	-	-	$ROOT_IP<% end %>
+SSH(ACCEPT)     net:$ADMIN     $FW<% if @ip_root %>	-	-	-	$ROOT_IP<% end %>
 Ping(ACCEPT)	all	       all
 
 # <%= @ip_root %> # Root
@@ -31,8 +31,8 @@ SHELL cat /etc/shorewall/rules.d.root/*.rules 2> /dev/null || true
 SHELL cat /etc/shorewall/rules.d.staging/*.rules 2> /dev/null || true
 
 <% end %>
-<% if @ip_production %># <%= @ip_production %> # Production
-SHELL cat /etc/shorewall/rules.d.production/*.rules 2> /dev/null || true
+<% if @ip_prod %># <%= @ip_prod %> # Production
+SHELL cat /etc/shorewall/rules.d.prod/*.rules 2> /dev/null || true
 
 <% end %>
 # VM

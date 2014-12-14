@@ -1,0 +1,1 @@
+DNAT            net     vz:%ip%:%port%    tcp     %port%	-	$%type%_IP # %hostname%

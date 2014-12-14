@@ -11,4 +11,10 @@ VZ_NETS="<%= @vz_network %>/24"
 
 ADMIN=<%= @ip_admin.join(',') %>
 
+<% if @ip_root %>ROOT_IP=<%= @ip_root %><% end %>
+<% if @ip_prod %>PROD_IP=<%= @ip_prod %><% end %>
+<% if @ip_prod_bck %>PROD_BCK_IP=<%= @ip_prod_bck %><% end %>
+<% if @ip_staging %>STAGING_IP=<%= @ip_staging %><% end %>
+<% if @ip_staging_bck %>STAGING_BCK_IP=<%= @ip_staging_bck %><% end %>
+
 #LAST LINE - ADD YOUR ENTRIES ABOVE THIS ONE - DO NOT REMOVE

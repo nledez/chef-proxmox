@@ -74,7 +74,7 @@ end
 apt_repository 'proxmox' do
   uri 'http://download.proxmox.com/debian'
   distribution "wheezy"
-  components [ "pve" ]
+  components [ "pve-no-subscription" ]
   key "http://download.proxmox.com/debian/key.asc"
 end
 

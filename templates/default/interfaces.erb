@@ -14,4 +14,5 @@
 #ZONE	INTERFACE	BROADCAST	OPTIONS
 net	$NET_IF		-		tcpflags,proxyarp=1
 vz	venet0		-		logmartians=0,routefilter=0,nets=($VZ_NETS),routeback,bridge
+<% if @openvpn %>vz	tun0<% end %>
 #LAST LINE -- ADD YOUR ENTRIES BEFORE THIS ONE -- DO NOT REMOVE
